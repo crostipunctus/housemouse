@@ -12,3 +12,5 @@ class Dogs(models.Model):
 
     def __str__(self):
         return f"{self.dog_name}"
+
+
