@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser, User
+from django.contrib.auth.models import AbstractUser
 from datetime import datetime
 
 # Create your models here.
@@ -14,3 +14,4 @@ class Dogs(models.Model):
         return f"{self.dog_name}"
 
 
+ 
