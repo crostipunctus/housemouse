@@ -6,14 +6,13 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from django.core.paginator import Paginator
-from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse 
 from .models import Dogs
-from django.db.models import Count, F, Value
 import json 
 
 def index(request):
     dogs = Dogs.objects.all()
+    print(dogs)
     user = request.user
     return render(request, "housemanager/index.html", {
         "dogs": dogs,
@@ -37,7 +36,10 @@ def login_view(request):
                 "message": "Invalid username and/or password."
             })
     else:
-        return render(request, "housemanager/login.html")
+        if request.user.is_authenticated:
+            return HttpResponseRedirect(reverse("index"))
+        else: 
+            return render(request, "housemanager/login.html")
 
 
 def logout_view(request):
