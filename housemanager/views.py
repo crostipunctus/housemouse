@@ -55,9 +55,9 @@ def dogs(request):
 
 
 def baby(request):
-    return HttpResponse("baby")
+    return render(request, "housemanager/baby.html")
 
 
 
 def house(request):
-    return HttpResponse("house")
+    return render(request, "housemanager/house.html")
