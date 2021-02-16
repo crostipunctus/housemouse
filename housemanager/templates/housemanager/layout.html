@@ -7,7 +7,7 @@
     <head>
         <title>House Manager</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link href="{% static 'network/styles.css' %}" rel="stylesheet">
+        <link href="{% static 'housemanager/styles.css' %}" rel="stylesheet">
     
         {% block script %}
         {% endblock %}
@@ -15,10 +15,10 @@
 
     <body>
         
-        <nav class="nav">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="nav-link active" href="{% url 'index' %}">House Manager</a>
-        </nav>
-         
+        
+            <div>
               <ul class="nav">
                 {% if user.is_authenticated %}
                     <li class="nav-item">
@@ -40,6 +40,8 @@
                    
                 {% endif %}
               </ul>
+              </div>
+              </nav>
                 {% block body %}
                 {% endblock %}
         

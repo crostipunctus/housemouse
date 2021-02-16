@@ -1,10 +1,19 @@
 {% extends "housemanager/layout.html" %}
+{% load static %}
 
+<head>
+    {% block script %}
+
+    {% endblock %}
+
+</head>
 
 {% block body %}
-   
-    <h5><a href="{% url 'dogs' %}">Dogs</a></h5>
-    <h5><a href="{% url 'baby' %}">Baby</a></h5>
-    <h5><a href="{% url 'house' %}">House</a></h5>
+    <div class="index-links">
+        <a class="btn btn-primary btn-sm" href="{% url 'dogs' %}" role="button">Dogs</a>
+        <a class="btn btn-primary btn-sm" href="{% url 'baby' %}" role="button">Baby</a></button>
+        <a class="btn btn-primary btn-sm" href="{% url 'house' %}" role="button">House</a>
+    </div>
+    
 
 {% endblock %}
