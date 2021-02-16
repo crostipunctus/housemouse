@@ -45,3 +45,19 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse("index")) 
+
+
+def dogs(request):
+    dogs = Dogs.objects.all()
+    return render(request, "housemanager/dogs.html", {
+        "dogs": dogs
+    })
+
+
+def baby(request):
+    return HttpResponse("baby")
+
+
+
+def house(request):
+    return HttpResponse("house")

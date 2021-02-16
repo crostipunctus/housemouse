@@ -2,12 +2,9 @@
 
 
 {% block body %}
-    {% for dogs in dogs %}
-    <h5>{{dogs.dog_name}}</h5>
-    
-    {% endfor %}
-    <h5>{{user.username}}</h5>
-hello
-
+   
+    <h5><a href="{% url 'dogs' %}">Dogs</a></h5>
+    <h5><a href="{% url 'baby' %}">Baby</a></h5>
+    <h5><a href="{% url 'house' %}">House</a></h5>
 
 {% endblock %}

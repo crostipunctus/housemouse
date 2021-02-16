@@ -1,0 +1,9 @@
+{% extends "housemanager/layout.html" %}
+
+{% block body %}
+
+    {% for dogs in dogs %}
+        <h5>{{dogs.dog_name}}</h5>
+    {% endfor %}
+
+{% endblock %}
