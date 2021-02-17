@@ -7,16 +7,20 @@ from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from django.core.paginator import Paginator
 from django.http import JsonResponse 
-from .models import Dogs
+from .models import Dogs, Todo, Items, Baby, House
 import json 
 
 def index(request):
     dogs = Dogs.objects.all()
-    print(dogs)
+    todo = Todo.objects.all()
+    items = Items.objects.all()
+    print(todo)
     user = request.user
     return render(request, "housemanager/index.html", {
         "dogs": dogs,
-        "user": user
+        "user": user, 
+        "todo": todo, 
+        "items": items
     })
     
 def login_view(request):
