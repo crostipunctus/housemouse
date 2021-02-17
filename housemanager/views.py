@@ -7,14 +7,13 @@ from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from django.core.paginator import Paginator
 from django.http import JsonResponse 
-from .models import Dogs, Todo, Items, Baby, House
+from .models import Dogs, Todo, Items, Baby
 import json 
 
 def index(request):
     dogs = Dogs.objects.all()
     todo = Todo.objects.all()
     items = Items.objects.all()
-    print(todo)
     user = request.user
     return render(request, "housemanager/index.html", {
         "dogs": dogs,
@@ -53,8 +52,10 @@ def logout_view(request):
 
 def dogs(request):
     dogs = Dogs.objects.all()
+    todo = Todo.objects.all()
     return render(request, "housemanager/dogs.html", {
-        "dogs": dogs
+        "dogs": dogs, 
+        "todo": todo
     })
 
 
@@ -63,5 +64,3 @@ def baby(request):
 
 
 
-def house(request):
-    return render(request, "housemanager/house.html")
