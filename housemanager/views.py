@@ -91,4 +91,7 @@ def baby(request):
     return render(request, "housemanager/baby.html")
 
 
+def bills(request):
+    return HttpResponse("bills")
+
 
