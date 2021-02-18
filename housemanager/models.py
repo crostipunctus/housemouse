@@ -9,8 +9,9 @@ from django.db.models.deletion import CASCADE
 
 class Dogs(models.Model):
     dog_name = models.CharField(max_length=200)
-    dog_birthdate = models.DateTimeField(auto_now=False, auto_now_add=False)
+    dog_birthdate = models.DateField(auto_now=False, auto_now_add=False)
     dog_weight = models.IntegerField(default=0)
+    
    
     def __str__(self):
         return f"{self.dog_name}"
@@ -38,7 +39,7 @@ class Items(models.Model):
 class Todo(models.Model):
     todo = models.CharField(max_length = 200)
     done = models.BooleanField(default=False)
-    todo_date = models.DateTimeField(default=datetime.now, blank=True)
+    todo_date = models.DateField(default=datetime.now, blank=True)
     dogs_todo = models.ManyToManyField(Dogs, related_name="Dogs_todo", blank=True)
     baby_todo = models.ManyToManyField(Baby, related_name="Baby_todo", blank=True)
 
@@ -46,12 +47,25 @@ class Todo(models.Model):
         return f"{self.todo}"
 
 
+class Vaccine(models.Model):
+    vaccine_dog = models.ForeignKey(Dogs, on_delete=models.CASCADE)
+    vaccine_type = models.CharField(max_length=200)
+    vaccine_lastdate = models.DateField(auto_now=False, auto_now_add=False)
+    vaccine_duedate = models.DateField(auto_now=False, auto_now_add=False)
+
+    def __str__(self):
+        return f"{self.vaccine_dog} took {self.vaccine_type} on {self.vaccine_lastdate}. Due on {self.vaccine_duedate}"
 
 
 
 
+class Bills(models.Model):
+    bill_name = models.CharField(max_length=200)
+    bill_photo = models.ImageField()
+    bill_due = models.DateField(auto_now=False, auto_now_add=False)
 
-
+    def __str__(self):
+        return f"{self.bill_name}"
 
 
 

@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from django.core.paginator import Paginator
 from django.http import JsonResponse 
-from .models import Dogs, Todo, Items, Baby
+from .models import Dogs, Todo, Items, Baby, Vaccine, Bills
 import json 
 
 def index(request):
