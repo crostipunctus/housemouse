@@ -33,10 +33,20 @@ html, body {
 }
 
 
-.bg-light {
-    background-color: grey;
-    margin: 0;
-    padding: 0;
+
+
+
+h5 {
+    color: white; 
+    margin: 20px;
 }
 
+a {
+    color: white;
+}
+
+a:hover{
+    color: orange;
+    text-decoration: none;
+}
 

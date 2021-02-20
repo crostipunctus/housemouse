@@ -86,6 +86,8 @@ def dogs(request):
         "todo": todo
     })
 
+def dog_name(request, name):
+    pass
 
 def baby(request):
     return render(request, "housemanager/baby.html")
