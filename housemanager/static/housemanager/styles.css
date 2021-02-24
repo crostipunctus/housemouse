@@ -68,10 +68,15 @@ a:hover{
     position: absolute;
     display: flex;
     flex-wrap: wrap;
+    border: 2px solid lightgray;
 }
 
 @media (max-width: 599px) {
     #todolist {
         width: 85%;
     }
+}
+
+#listitem {
+    border-bottom: 1px solid lightgray;
 }
