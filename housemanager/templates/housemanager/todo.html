@@ -1,0 +1,28 @@
+{% extends "housemanager/layout.html" %}
+{% load static %}
+{% block script%}
+    <script src="{% static 'housemanager/todo.js' %}"></script>
+
+{% endblock %}
+{% block body %}
+
+    <div id="todolist">
+
+        <ul>
+            {% for todo in todo%}
+            <li id="listitem">            
+                    <h5>{{todo.todo}}</h5>
+                    <h6>{{todo.todo_date}}</h6>             
+            </li>
+            {% endfor%}
+        </ul>
+
+        <button class="btn btn-primary" id="create-todo">
+            Add todo
+        </button>
+
+    </div>
+
+    
+
+{% endblock %}
