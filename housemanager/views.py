@@ -97,3 +97,8 @@ def bills(request):
     return HttpResponse("bills")
 
 
+def todo(request):
+    todolist = Todo.objects.all()
+    return render(request, "housemanager/todo.html", {
+        "todo": todolist
+    })

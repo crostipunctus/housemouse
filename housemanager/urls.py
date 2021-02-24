@@ -10,6 +10,7 @@ urlpatterns = [
     path("dogs", views.dogs, name="dogs"), 
     path("dogs/<str:name>", views.dog_name, name="dog_name"),
     path("baby", views.baby, name="baby"),
-    path("bills", views.bills, name="bills")
+    path("bills", views.bills, name="bills"),
+    path("todo", views.todo, name="todo")
     
 ] 
