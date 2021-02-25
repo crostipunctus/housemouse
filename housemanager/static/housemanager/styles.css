@@ -87,6 +87,7 @@ a:hover{
     color: black;
     border: none;
     border-radius: 7px;
+    margin-top: 10px;
 }
 
 #create-todo:hover {
