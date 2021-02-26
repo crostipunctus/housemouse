@@ -9,20 +9,20 @@ document.addEventListener('DOMContentLoaded', function() {
       f.setAttribute('method',"post");
       f.setAttribute('action',"submit.php");
 
-      let i = document.createElement("input"); //input element, text
-      i.setAttribute('type',"text");
-      i.setAttribute('name',"username");
+      let i = document.createElement("input");
+      i.type = "text";
+      i.name = "new-todo";
+      i.id = "new-todo";
+      i.placeholder = "add todo";
 
-      let s = document.createElement("input"); //input element, Submit button
-      s.setAttribute('type',"submit");
-      s.setAttribute('value',"Submit");
-
-      
-      f.classList.add("form-group")
+     
+      i.classList.add("form-control")
+    
       console.log(f)
 
+     
       f.appendChild(i)
-      f.appendChild(s)
+     
       list.appendChild(f)
 
 
