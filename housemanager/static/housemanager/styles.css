@@ -95,3 +95,23 @@ a:hover{
     color: white;
     border: none;
 }
+
+
+.todo-button {
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 7px;
+    margin-top: 10px;
+    margin-right: 25px;
+    width: 341px;
+    height: 35px;
+}
+
+.todo-button:hover {
+    background-color: #107FBB;
+    color: white;
+    border: none;
+
+
+}

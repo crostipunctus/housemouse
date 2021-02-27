@@ -102,3 +102,6 @@ def todo(request):
     return render(request, "housemanager/todo.html", {
         "todo": todolist
     })
+
+def update_todo(request):
+    pass

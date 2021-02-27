@@ -11,6 +11,10 @@ urlpatterns = [
     path("dogs/<str:name>", views.dog_name, name="dog_name"),
     path("baby", views.baby, name="baby"),
     path("bills", views.bills, name="bills"),
-    path("todo", views.todo, name="todo")
+    path("todo", views.todo, name="todo"),
+
+    #js paths
+
+    path("update-todo", views.update_todo, name="update-todo")
     
 ] 
