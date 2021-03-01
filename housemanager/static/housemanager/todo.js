@@ -1,17 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
 
   let create_todo = document.querySelector("#create-todo")
-  let b = document.createElement("button")
+  
+  let add_todo = document.querySelector("#add-todo")
+  
 
-    b.innerText = "Add todo"
-
-    b.value = "Add todo"
-
-    b.classList = "todo-button"
-
-    b.id = "todo-button"
-
-    b.style.display = "none"
+  add_todo.style.display = "none";
    
 
 
@@ -23,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
       f.setAttribute('method',"post");
       f.id = "todo-form";
       
+      
 
       let i = document.createElement("input");
       i.type = "text";
@@ -31,12 +26,14 @@ document.addEventListener('DOMContentLoaded', function() {
       i.placeholder = "add todo";
       i.style.marginTop = "25px";
       
+      
+      
 
 
      
       i.classList.add("form-control")
     
-      console.log(f.id)
+      
 
      
       f.appendChild(i)
@@ -44,10 +41,23 @@ document.addEventListener('DOMContentLoaded', function() {
       list.appendChild(f)
 
       create_todo.style.display = "none";
+      add_todo.style.display = "block";
 
-      b.style.display = "block"
+      add_todo.onclick = function() {
+       
+        fetch('/update-todo', {
+          method: 'POST', 
+          body: JSON.stringify({
+            todo: `${i.value}`
+          })
+        })
+      
+      
+      
+      }
 
-      list.appendChild(b)
+      
+
       
 
 

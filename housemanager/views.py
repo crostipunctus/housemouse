@@ -9,6 +9,7 @@ from datetime import datetime
 from django.core.paginator import Paginator
 from django.http import JsonResponse 
 from .models import Dogs, Todo, Items, Baby, Vaccine, Bills
+from django.views.decorators.csrf import csrf_exempt
 import json 
 
 def index(request):
@@ -103,5 +104,9 @@ def todo(request):
         "todo": todolist
     })
 
+@csrf_exempt
 def update_todo(request):
-    pass
+    data = json.loads(request.body)
+    text = data.get("todo")
+    print(text)
+    return HttpResponse('hello')
