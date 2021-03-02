@@ -108,5 +108,7 @@ def todo(request):
 def update_todo(request):
     data = json.loads(request.body)
     text = data.get("todo")
-    print(text)
+    date = data.get("date")
+    new_todo = Todo(todo=text, todo_date=date)
+    new_todo.save()
     return HttpResponse('hello')

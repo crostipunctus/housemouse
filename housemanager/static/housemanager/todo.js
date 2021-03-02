@@ -25,19 +25,19 @@ document.addEventListener('DOMContentLoaded', function() {
       i.id = "new-todo";
       i.placeholder = "add todo";
       i.style.marginTop = "25px";
-      
-      
-      
-
-
-     
       i.classList.add("form-control")
-    
-      
 
-     
+      let d = document.createElement("input");
+      d.type = "date";
+      d.name = "date_todo";
+      d.id = "date_todo";
+      d.placeholder = "dd-mm-yy";
+      d.style.marginTop = "25px";
+      d.classList.add("form-control")
+
+   
       f.appendChild(i)
-     
+      f.appendChild(d)
       list.appendChild(f)
 
       create_todo.style.display = "none";
@@ -48,11 +48,16 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch('/update-todo', {
           method: 'POST', 
           body: JSON.stringify({
-            todo: `${i.value}`
+            todo: `${i.value}`,
+            date: `${d.value}`
           })
         })
       
-      
+      let new_todo = document.createElement("li")
+      new_todo.classList = "listitem"
+      new_todo.innerHTML = `${i.value}: ${d.value}`
+      list.appendChild(new_todo)
+      f.style.display = "none";
       
       }
 

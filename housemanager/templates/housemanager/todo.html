@@ -10,9 +10,9 @@
 
         <ul id="ullist">
             {% for todo in todo%}
-            <li id="listitem">            
-                    <h5>{{todo.todo}}</h5>
-                    <h6>{{todo.todo_date}}</h6>             
+            <li id="listitem" class="listitem">            
+                    {{todo.todo}}: 
+                    {{todo.todo_date}}            
             </li>
             {% endfor%}
         </ul>
