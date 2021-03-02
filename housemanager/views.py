@@ -88,7 +88,11 @@ def dogs(request):
     })
 
 def dog_name(request, name):
-    pass
+    dog_details = Dogs.objects.filter(dog_name=name)
+    print(dog_details)
+    return render(request, "housemanager/dogs.html", {
+        "dog_details": dog_details
+    })
 
 def baby(request):
     return render(request, "housemanager/baby.html")
