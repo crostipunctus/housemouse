@@ -89,9 +89,12 @@ def dogs(request):
 
 def dog_name(request, name):
     dog_details = Dogs.objects.filter(dog_name=name)
-    print(dog_details)
+    dog_id = Dogs.objects.get(dog_name = name)
+    dog_vac = Vaccine.objects.get(vaccine_dog = dog_id)
+    print(dog_vac)
     return render(request, "housemanager/dogs.html", {
-        "dog_details": dog_details
+        "dog_details": dog_details, 
+        "vaccine": dog_vac
     })
 
 def baby(request):
