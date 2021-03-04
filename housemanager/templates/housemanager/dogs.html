@@ -1,18 +1,25 @@
 {% extends "housemanager/layout.html" %}
+{% load static %}
+{% block script %}
+    <script src="{% static 'housemanager/dogs.js' %}"></script>
+{% endblock %}
 
 {% block body %}
-
+<div id="dogs">
     {% for dogs in dogs %}
         <h5><a href="{% url 'dog_name' dogs.dog_name %}">{{dogs.dog_name}}</a></h5>
     {% endfor %}
 
-    {% for dog_details in dog_details%}
-        <h5>{{dog_details.dog_name}} was born on {{dog_details.dog_birthdate}}</h5>
-        <h5>{{dog_details.dog_name}} weighs {{dog_details.dog_weight}} KG's</h5>
-    {% endfor %}
+    <button id="add_dog" class="btn-primary btn-lg">Add dog</button>
+
+    <button id="dog_but" class="btn-primary btn-lg">Add dog</button>
+
+</div>   
+
+
     
   
-        <h5>{{vaccine.vaccine_dog}}'s next vaccine is on {{vaccine.vaccine_duedate}}</h5>
+     
   
 
 {% endblock %}

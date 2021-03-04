@@ -1,0 +1,15 @@
+{% extends "housemanager/layout.html" %}
+
+{% block body %}
+
+
+    {% for dog_details in dog_details%}
+        <h5>{{dog_details.dog_name}} was born on {{dog_details.dog_birthdate}}</h5>
+        <h5>{{dog_details.dog_name}} weighs {{dog_details.dog_weight}} KG's</h5>
+    {% endfor %}
+    
+    {% if vaccine %}
+        <h5>{{vaccine.vaccine_dog}}'s next vaccine is on {{vaccine.vaccine_duedate}}</h5>
+    {% endif %}
+
+{% endblock %}

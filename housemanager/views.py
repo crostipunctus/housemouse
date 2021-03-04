@@ -90,12 +90,16 @@ def dogs(request):
 def dog_name(request, name):
     dog_details = Dogs.objects.filter(dog_name=name)
     dog_id = Dogs.objects.get(dog_name = name)
-    dog_vac = Vaccine.objects.get(vaccine_dog = dog_id)
-    print(dog_vac)
-    return render(request, "housemanager/dogs.html", {
+    try:
+        dog_vac = Vaccine.objects.get(vaccine_dog = dog_id)
+        return render(request, "housemanager/dog_name.html", {
         "dog_details": dog_details, 
         "vaccine": dog_vac
     })
+    except:
+        return render(request, "housemanager/dog_name.html", {
+        "dog_details": dog_details, 
+        })
 
 def baby(request):
     return render(request, "housemanager/baby.html")
