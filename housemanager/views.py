@@ -123,3 +123,18 @@ def update_todo(request):
     new_todo = Todo(todo=text, todo_date=date)
     new_todo.save()
     return HttpResponse('hello')
+
+
+@csrf_exempt
+def add_dog(request):
+    data = json.loads(request.body)
+    name = data.get("dog_name")
+    print(name)
+    date = data.get("dog_date")
+    print(date)
+    weight = data.get("dog_weight")
+    print(weight)
+    new_dog = Dogs(dog_name=name, dog_birthdate = date, dog_weight = weight)
+    new_dog.save()
+    return HttpResponse("done")
+ 

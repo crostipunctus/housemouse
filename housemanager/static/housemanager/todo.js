@@ -58,6 +58,8 @@ document.addEventListener('DOMContentLoaded', function() {
       new_todo.innerHTML = `${i.value}: ${d.value}`
       list.appendChild(new_todo)
       f.style.display = "none";
+      add_todo.style.display = "none";
+      create_todo.style.display = "block";
       
       }
 

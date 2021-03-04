@@ -6,9 +6,11 @@
 
 {% block body %}
 <div id="dogs">
-    {% for dogs in dogs %}
-        <h5><a href="{% url 'dog_name' dogs.dog_name %}">{{dogs.dog_name}}</a></h5>
-    {% endfor %}
+    <div id="dog_list">
+        {% for dogs in dogs %}
+            <h5><a href="{% url 'dog_name' dogs.dog_name %}">{{dogs.dog_name}}</a></h5>
+        {% endfor %}
+    </div>
 
     <button id="add_dog" class="btn-primary btn-lg">Add dog</button>
 
@@ -17,7 +19,7 @@
 </div>   
 
 
-    
+     
   
      
   

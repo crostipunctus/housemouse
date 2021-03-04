@@ -15,6 +15,7 @@ urlpatterns = [
 
     #js paths
 
-    path("update-todo", views.update_todo, name="update-todo")
+    path("update-todo", views.update_todo, name="update-todo"),
+    path("add-dog", views.add_dog, name="add-dog")
     
 ] 
