@@ -55,10 +55,13 @@ document.addEventListener('DOMContentLoaded', function() {
                   dog_date: `${bday.value}`,
                   dog_weight: `${weight.value}`
                 })
+                
               })
+              .then(response => response.text())
 
         let new_dog = document.createElement("h5")
         new_dog.innerHTML = di.value
+        dog_form.style.display = "none"
         dog_list.appendChild(new_dog)    
 
 

@@ -52,6 +52,8 @@ document.addEventListener('DOMContentLoaded', function() {
             date: `${d.value}`
           })
         })
+        .then(response => response.text()) 
+       
       
       let new_todo = document.createElement("li")
       new_todo.classList = "listitem"
