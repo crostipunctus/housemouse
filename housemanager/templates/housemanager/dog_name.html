@@ -10,9 +10,13 @@
     
     {% if vaccine %}
         <h5>{{vaccine.vaccine_dog}}'s next vaccine is on {{vaccine.vaccine_duedate}}</h5>
-        <h5>{{dog_todo.dogs_todo}}</h5>
+        
     {% endif %}
 
-        <h5>{{dog_todo.dogs_todo}}</h5>
+<div>
+    {% for dog_todo in dog_todo %}
+        <h5>Todo: {{dog_todo.todo}}</h5>
+    {% endfor %}
+</div>
 
 {% endblock %}

@@ -92,7 +92,7 @@ def dog_name(request, name):
     dog_id = Dogs.objects.get(dog_name = name)
     all_dogs = Dogs.objects.all()
     dog_todo = Todo.objects.filter(dogs_todo=dog_id)
-    print(dog_todo)
+   
     try:
         dog_vac = Vaccine.objects.get(vaccine_dog = dog_id)
         return render(request, "housemanager/dog_name.html", {
