@@ -12,7 +12,8 @@
             {% for todo in todo%}
             <li id="listitem" class="listitem">            
                     {{todo.todo}}: 
-                    {{todo.todo_date}}            
+                    {{todo.todo_date}}  
+                    <input  type="checkbox" id="todo-done">          
             </li>
             {% endfor%}
         </ul>

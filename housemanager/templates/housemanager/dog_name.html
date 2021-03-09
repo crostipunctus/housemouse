@@ -15,7 +15,7 @@
 
 <div>
     {% for dog_todo in dog_todo %}
-        <h5>Todo: {{dog_todo.todo}}</h5>
+        <h5><a href="{% url 'todo'  %}">Todo: {{dog_todo.todo}}</a></h5>
     {% endfor %}
 </div>
 
