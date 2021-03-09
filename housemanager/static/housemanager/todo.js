@@ -7,6 +7,39 @@ document.addEventListener('DOMContentLoaded', function() {
 
   add_todo.style.display = "none";
    
+  let checkboxes = document.querySelectorAll("#todo-done")
+  
+
+
+  checkboxes.forEach(element => {
+
+    fetch(`/todo-done/${element.dataset.id}`)
+            .then(response => response.json())
+            .then(data =>  {
+              let obj = data.Message
+              console.log(obj)
+            })
+
+    element.onclick = function () {
+      element.checked == true;
+      let id = element.dataset.id
+      console.log(id)
+      
+      fetch('/todo-done', {
+        method: 'POST', 
+        body: JSON.stringify({
+          id: `${id}`,
+         
+        })
+      })
+      .then(response => response.text()) 
+
+
+    }
+
+
+
+  })
 
 
   
@@ -73,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
 
       
-
+      
       
 
 

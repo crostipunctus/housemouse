@@ -117,6 +117,7 @@ def bills(request):
 
 def todo(request):
     todolist = Todo.objects.all()
+    print(todolist)
     return render(request, "housemanager/todo.html", {
         "todo": todolist
     })
@@ -141,3 +142,17 @@ def add_dog(request):
     new_dog.save()
     return JsonResponse({"message": "Dog added."}, status=201)
  
+
+@csrf_exempt
+def todo_done(request, id):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        todo_id = data.get("id")
+        Todo.objects.filter(id=todo_id).update(done=True)
+        
+        return JsonResponse({"message": "Todo done"}, status=201)
+    else:
+        if Todo.objects.get(id=id, done=True):
+            return JsonResponse({"message": "true"})
+        else:
+            return JsonResponse({"message": "false"})
