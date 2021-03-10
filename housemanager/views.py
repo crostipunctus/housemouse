@@ -144,15 +144,17 @@ def add_dog(request):
  
 
 @csrf_exempt
-def todo_done(request, id):
-    if request.method == "POST":
-        data = json.loads(request.body)
-        todo_id = data.get("id")
-        Todo.objects.filter(id=todo_id).update(done=True)
-        
-        return JsonResponse({"message": "Todo done"}, status=201)
+def todo_done(request):
+    
+    data = json.loads(request.body)
+    todo_id = data.get("id")
+    Todo.objects.filter(id=todo_id).update(done=True)
+    
+    return JsonResponse({"Message": "Todo done"}, status=201)
+    
+@csrf_exempt
+def todo_done_id(request, id):
+    if Todo.objects.filter(id=id, done=True):
+        return JsonResponse({"Message": "true"}, status=201)
     else:
-        if Todo.objects.get(id=id, done=True):
-            return JsonResponse({"message": "true"})
-        else:
-            return JsonResponse({"message": "false"})
+        return JsonResponse({"Message": "false"}, status=201)

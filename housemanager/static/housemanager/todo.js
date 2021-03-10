@@ -12,12 +12,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
   checkboxes.forEach(element => {
+    console.log(element.dataset.id)
 
-    fetch(`/todo-done/${element.dataset.id}`)
+    fetch(`/todo_done_id/${element.dataset.id}`)
             .then(response => response.json())
             .then(data =>  {
               let obj = data.Message
-              console.log(obj)
+              
+              
+            
+
+              if (obj === "true")
+              {
+                console.log("yes")
+                let done = document.querySelector(`.listitem[data-id="${element.dataset.id}"]`)
+                console.log(done)
+                let donetext = done.innerText
+                
+              }
+              else {
+                console.log("no")
+              }
             })
 
     element.onclick = function () {
@@ -25,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
       let id = element.dataset.id
       console.log(id)
       
-      fetch('/todo-done', {
+      fetch('/todo_done', {
         method: 'POST', 
         body: JSON.stringify({
           id: `${id}`,
