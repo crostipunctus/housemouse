@@ -18,6 +18,6 @@ urlpatterns = [
     path("update_todo", views.update_todo, name="update-todo"),
     path("add_dog", views.add_dog, name="add-dog"),
     path("todo_done", views.todo_done, name="todo_done"),
-    path("todo_done_id/<str:id>", views.todo_done_id, name="todo_done_id")
+  
     
 ] 

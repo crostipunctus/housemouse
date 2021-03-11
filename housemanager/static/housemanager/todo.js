@@ -14,26 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
   checkboxes.forEach(element => {
     console.log(element.dataset.id)
 
-    fetch(`/todo_done_id/${element.dataset.id}`)
-            .then(response => response.json())
-            .then(data =>  {
-              let obj = data.Message
-              
-              
-            
-
-              if (obj === "true")
-              {
-                console.log("yes")
-                let done = document.querySelector(`.listitem[data-id="${element.dataset.id}"]`)
-                console.log(done)
-                done.remove()
-                
-              }
-              else {
-                console.log("no")
-              }
-            })
 
     element.onclick = function () {
       element.checked == true;
@@ -89,11 +69,35 @@ document.addEventListener('DOMContentLoaded', function() {
       c.type = "checkbox";
       c.id = "todo-done";
 
+      let s = document.createElement("h6")
+      let l = document.createTextNode("Choose category:")
+      s.appendChild(l)
+      
+      let p = document.createElement("button")
+      p.innerHTML = "Dog";
+      p.style.background = "none";
+      p.style.border = "none";
+      p.style.color = "white";
+      
+      let v = document.createElement("button")
+      v.innerHTML = "Baby";
+      v.style.background = "none";
+      v.style.border = "none";
+      v.style.color = "white";
+
+      let x = document.createElement("button")
+      x.innerHTML = "Dog";
+      x.style.background = "none";
+      x.style.border = "none";
+      x.style.color = "white";
 
    
       f.appendChild(i)
       f.appendChild(d)
-      
+      f.appendChild(s)
+      f.appendChild(p)
+      f.appendChild(v)
+      f.appendChild(x)
       list.appendChild(f)
 
       create_todo.style.display = "none";
@@ -101,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       add_todo.onclick = function() {
        
-        fetch('/update-todo', {
+        fetch('/update_todo', {
           method: 'POST', 
           body: JSON.stringify({
             todo: `${i.value}`,

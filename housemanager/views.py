@@ -116,7 +116,7 @@ def bills(request):
 
 
 def todo(request):
-    todolist = Todo.objects.all()
+    todolist = Todo.objects.filter(done=False)
     print(todolist)
     return render(request, "housemanager/todo.html", {
         "todo": todolist
@@ -152,9 +152,3 @@ def todo_done(request):
     
     return JsonResponse({"Message": "Todo done"}, status=201)
     
-@csrf_exempt
-def todo_done_id(request, id):
-    if Todo.objects.filter(id=id, done=True):
-        return JsonResponse({"Message": "true"}, status=201)
-    else:
-        return JsonResponse({"Message": "false"}, status=201)
