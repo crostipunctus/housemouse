@@ -72,36 +72,38 @@ document.addEventListener('DOMContentLoaded', function() {
       let s = document.createElement("h6")
       let l = document.createTextNode("Choose category:")
       s.appendChild(l)
-      
-      let p = document.createElement("button")
-      p.innerHTML = "Dog";
-      p.style.background = "none";
-      p.style.border = "none";
-      p.style.color = "white";
-      
-      let v = document.createElement("button")
-      v.innerHTML = "Baby";
-      v.style.background = "none";
-      v.style.border = "none";
-      v.style.color = "white";
 
-      let x = document.createElement("button")
-      x.innerHTML = "Dog";
-      x.style.background = "none";
-      x.style.border = "none";
-      x.style.color = "white";
+      let p_label = document.createElement("label")
+      p_label.innerHTML = "Dogs"
+
+      let p = document.createElement("input")
+      p.type = "radio"
+      p.id = "dog-radio"
+      p.name = "dog"
+      p.innerHTML = "Dog"
+      
+
+      p_label.appendChild(p)
+
+      p.onclick = function () {
+        console.log(p_label.innerText)
+
+      }
+      
 
    
       f.appendChild(i)
       f.appendChild(d)
       f.appendChild(s)
-      f.appendChild(p)
-      f.appendChild(v)
-      f.appendChild(x)
+      f.appendChild(p_label)
+     
+      //f.appendChild(v)
+      //f.appendChild(x)
       list.appendChild(f)
 
       create_todo.style.display = "none";
       add_todo.style.display = "block";
+  
 
       add_todo.onclick = function() {
        
@@ -128,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       
       
-      
+  
 
 
 
