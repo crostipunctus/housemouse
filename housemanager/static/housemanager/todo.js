@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log("yes")
                 let done = document.querySelector(`.listitem[data-id="${element.dataset.id}"]`)
                 console.log(done)
-                let donetext = done.innerText
+                done.remove()
                 
               }
               else {
@@ -39,6 +39,8 @@ document.addEventListener('DOMContentLoaded', function() {
       element.checked == true;
       let id = element.dataset.id
       console.log(id)
+      let done_do = document.querySelector(`.listitem[data-id="${element.dataset.id}"]`)
+      done_do.remove()
       
       fetch('/todo_done', {
         method: 'POST', 
