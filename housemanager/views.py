@@ -107,7 +107,10 @@ def dog_name(request, name):
         })
 
 def baby(request):
-    return render(request, "housemanager/baby.html")
+    baby_todo = Todo.objects.filter(todo_cat="Baby", done=False)
+    return render(request, "housemanager/baby.html", {
+        "baby_todo": baby_todo
+    })
 
 
 def bills(request):
