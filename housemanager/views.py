@@ -81,7 +81,7 @@ def register(request):
 
 def dogs(request):
     dogs = Dogs.objects.all()
-    todo = Todo.objects.all()
+    todo = Todo.objects.filter(todo_cat="Dogs")
     return render(request, "housemanager/dogs.html", {
         "dogs": dogs, 
         "todo": todo
@@ -90,20 +90,19 @@ def dogs(request):
 def dog_name(request, name):
     dog_details = Dogs.objects.filter(dog_name=name)
     dog_id = Dogs.objects.get(dog_name = name)
-    all_dogs = Dogs.objects.all()
-    dog_todo = Todo.objects.filter(dogs_todo=dog_id)
+    
    
     try:
         dog_vac = Vaccine.objects.get(vaccine_dog = dog_id)
         return render(request, "housemanager/dog_name.html", {
         "dog_details": dog_details, 
         "vaccine": dog_vac,
-        "dog_todo": dog_todo
+        
     })
     except:
         return render(request, "housemanager/dog_name.html", {
         "dog_details": dog_details, 
-        "dog_todo": dog_todo
+       
 
         })
 
@@ -128,8 +127,7 @@ def update_todo(request):
     text = data.get("todo")
     date = data.get("date")
     option = data.get("category")
-    new_todo = Todo(todo=text, todo_date=date)
-    
+    new_todo = Todo(todo=text, todo_date=date, todo_cat = option)
     new_todo.save()
     return JsonResponse({"message": "Todo added."}, status=201)
 
