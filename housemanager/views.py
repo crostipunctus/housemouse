@@ -127,7 +127,9 @@ def update_todo(request):
     data = json.loads(request.body)
     text = data.get("todo")
     date = data.get("date")
+    option = data.get("category")
     new_todo = Todo(todo=text, todo_date=date)
+    
     new_todo.save()
     return JsonResponse({"message": "Todo added."}, status=201)
 

@@ -69,49 +69,43 @@ document.addEventListener('DOMContentLoaded', function() {
       c.type = "checkbox";
       c.id = "todo-done";
 
-      let s = document.createElement("h6")
-      let l = document.createTextNode("Choose category:")
-      s.appendChild(l)
+         
+      let opt_label = document.createElement("label")
+      opt_label.innerHTML = "Choose a category:"
 
-      let p_label = document.createElement("label")
-      p_label.innerHTML = "Dogs"
+      let options = document.createElement("select")
+      let opt_1 = document.createElement("option")
+      opt_1.text = "Dogs"
+      let opt_2 = document.createElement("option")
+      opt_2.text = "Bills"
+      let opt_3 = document.createElement("option")
+      opt_3.text = "Baby"
 
-      let p = document.createElement("input")
-      p.type = "radio"
-      p.id = "dog-radio"
-      p.name = "dog"
-      p.innerHTML = "Dog"
+      options.add(opt_1)
+      options.add(opt_2)
+      options.add(opt_3)
       
-
-      p_label.appendChild(p)
-
-      p.onclick = function () {
-        console.log(p_label.innerText)
-
-      }
-      
-
-   
       f.appendChild(i)
       f.appendChild(d)
-      f.appendChild(s)
-      f.appendChild(p_label)
-     
-      //f.appendChild(v)
-      //f.appendChild(x)
+      f.appendChild(options)
       list.appendChild(f)
+
+      
 
       create_todo.style.display = "none";
       add_todo.style.display = "block";
   
 
       add_todo.onclick = function() {
+
+        console.log(options.value)
        
         fetch('/update_todo', {
           method: 'POST', 
           body: JSON.stringify({
             todo: `${i.value}`,
-            date: `${d.value}`
+            date: `${d.value}`,
+            category: `${options.value}`
           })
         })
         .then(response => response.text()) 
