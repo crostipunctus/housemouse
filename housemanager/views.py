@@ -81,7 +81,7 @@ def register(request):
 
 def dogs(request):
     dogs = Dogs.objects.all()
-    todo = Todo.objects.filter(todo_cat="Dogs")
+    todo = Todo.objects.filter(todo_cat="Dogs", done=False)
     return render(request, "housemanager/dogs.html", {
         "dogs": dogs, 
         "todo": todo
