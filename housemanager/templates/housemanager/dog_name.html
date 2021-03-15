@@ -1,11 +1,17 @@
 {% extends "housemanager/layout.html" %}
+{% load static %}
+{% block script %}
+    <script src="{% static 'housemanager/dog-name.js' %}"></script>
+{% endblock %}
 
 {% block body %}
 
 
     {% for dog_details in dog_details%}
         <h5>{{dog_details.dog_name}} was born on {{dog_details.dog_birthdate}}</h5>
-        <h5>{{dog_details.dog_name}} weighs {{dog_details.dog_weight}} KG's</h5>
+        <h5 id="weight-field">{{dog_details.dog_name}} weighs {{dog_details.dog_weight}} Kg's</h5>
+        <button id="weight" class="btn-primary btn">Edit weight</button>
+        <button id="submit" class="btn-primary btn">Submit</button>
     {% endfor %}
     
     {% if vaccine %}
