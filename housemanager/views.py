@@ -88,23 +88,25 @@ def dogs(request):
     })
 
 def dog_name(request, name):
-    dog_details = Dogs.objects.filter(dog_name=name)
-    dog_id = Dogs.objects.get(dog_name = name)
-    
-   
-    try:
-        dog_vac = Vaccine.objects.get(vaccine_dog = dog_id)
-        return render(request, "housemanager/dog_name.html", {
-        "dog_details": dog_details, 
-        "vaccine": dog_vac,
+    if request.method == "GET":
+        dog_details = Dogs.objects.filter(dog_name=name)
+        dog_id = Dogs.objects.get(dog_name = name)
         
-    })
-    except:
-        return render(request, "housemanager/dog_name.html", {
-        "dog_details": dog_details, 
-       
-
+    
+        try:
+            dog_vac = Vaccine.objects.get(vaccine_dog = dog_id)
+            return render(request, "housemanager/dog_name.html", {
+            "dog_details": dog_details, 
+            "vaccine": dog_vac,
+            
         })
+        except:
+            return render(request, "housemanager/dog_name.html", {
+            "dog_details": dog_details, 
+        
+
+            })
+   
 
 def baby(request):
     baby_todo = Todo.objects.filter(todo_cat="Baby", done=False)
@@ -155,3 +157,13 @@ def todo_done(request):
     
     return JsonResponse({"Message": "Todo done"}, status=201)
     
+@csrf_exempt
+def dog_weight(request):    
+    data = json.loads(request.body)
+    name = data.get("dog_name")
+    print(name)
+    weight = data.get("weight")
+    print(weight)
+    Dogs.objects.filter(dog_name=name).update(dog_weight=weight)
+    return JsonResponse({"message": "Success"}, status=201)
+
