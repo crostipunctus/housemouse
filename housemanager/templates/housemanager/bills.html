@@ -1,0 +1,14 @@
+{% extends "housemanager/layout.html" %}
+
+{% block body %}
+
+{% for bills in bills %}
+
+    <h5>{{bills.bill_name}}</h5>
+    <h5>{{bills.bill_amount}}</h5>
+    <h5>{{bills.bill_due}}</h5>
+
+{% endfor %}
+
+
+{% endblock %}

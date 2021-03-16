@@ -18,6 +18,8 @@ urlpatterns = [
     path("update_todo", views.update_todo, name="update-todo"),
     path("add_dog", views.add_dog, name="add-dog"),
     path("todo_done", views.todo_done, name="todo_done"),
-    path("dog_weight", views.dog_weight, name="dog-weight")
+    path("dog_weight", views.dog_weight, name="dog-weight"),
+
+    
     
 ] 

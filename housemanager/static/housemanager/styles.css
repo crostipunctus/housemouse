@@ -43,7 +43,10 @@ html, body {
 }
 
 
-
+h4 {
+    color: white;
+    margin: 20px;
+}
 
 h5, h6 {
     color: white; 
@@ -117,4 +120,8 @@ a:hover{
     background-color: #107FBB;
     color: white;
     border: none;
+}
+
+.btn {
+    margin: 20px;
 }

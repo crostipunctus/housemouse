@@ -81,6 +81,10 @@ document.addEventListener('DOMContentLoaded', function() {
       let opt_3 = document.createElement("option")
       opt_3.text = "Baby"
 
+      options.classList.add("form-select")
+      options.style.marginTop = "20px"
+
+
       options.add(opt_1)
       options.add(opt_2)
       options.add(opt_3)

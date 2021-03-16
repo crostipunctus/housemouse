@@ -59,7 +59,7 @@ class Vaccine(models.Model):
 
 class Bills(models.Model):
     bill_name = models.CharField(max_length=200)
-    bill_photo = models.ImageField()
+    bill_amount = models.IntegerField(default=0)
     bill_due = models.DateField(auto_now=False, auto_now_add=False)
 
     def __str__(self):

@@ -116,7 +116,12 @@ def baby(request):
 
 
 def bills(request):
-    return HttpResponse("bills")
+    bills = Bills.objects.all()
+
+
+    return render(request, "housemanager/bills.html", {
+        "bills": bills,
+    })
 
 
 def todo(request):
