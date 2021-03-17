@@ -11,6 +11,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
         add_dog.style.display = "none";
         
+        let new_div = document.createElement("div")
+        new_div.style.width = "95%";
+        new_div.style.paddingRight = "25px"
+        new_div.style.paddingLeft = "25px"
+
         let dog_form = document.createElement("form")
         dog_form.setAttribute('method',"post");
         dog_form.id = "dog-form";
@@ -42,7 +47,8 @@ document.addEventListener('DOMContentLoaded', function() {
         dog_form.appendChild(di)
         dog_form.appendChild(weight) 
         dog_form.appendChild(bday)
-        dog_list.append(dog_form)
+        new_div.appendChild(dog_form)
+        dog_list.append(new_div)
 
         dog_but.style.display = "block"
 
