@@ -7,7 +7,8 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from django.core.paginator import Paginator
-from django.http import JsonResponse 
+from django.http import JsonResponse
+from django.views.decorators import csrf 
 from .models import Dogs, Todo, Items, Baby, Vaccine, Bills
 from django.views.decorators.csrf import csrf_exempt
 import json 
@@ -114,14 +115,22 @@ def baby(request):
         "baby_todo": baby_todo
     })
 
-
+@csrf_exempt
 def bills(request):
     bills = Bills.objects.all()
-
-
     return render(request, "housemanager/bills.html", {
         "bills": bills,
     })
+
+@csrf_exempt
+def add_bill(request):
+    data = json.loads(request.body)
+    name = data.get("name")
+    amount = data.get("amount")
+    due = data.get("due")
+    b = Bills(bill_name=name, bill_amount=amount, bill_due=due)
+    b.save()
+    return JsonResponse({"message": "Bill added"}, status=201)
 
 
 def todo(request):

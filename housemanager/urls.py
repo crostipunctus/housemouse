@@ -12,6 +12,7 @@ urlpatterns = [
     path("baby", views.baby, name="baby"),
     path("bills", views.bills, name="bills"),
     path("todo", views.todo, name="todo"),
+ 
 
     #js paths
 
@@ -19,7 +20,7 @@ urlpatterns = [
     path("add_dog", views.add_dog, name="add-dog"),
     path("todo_done", views.todo_done, name="todo_done"),
     path("dog_weight", views.dog_weight, name="dog-weight"),
-
+    path("add_bill", views.add_bill, name="add-bill")
     
     
 ] 

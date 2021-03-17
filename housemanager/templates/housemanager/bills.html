@@ -1,14 +1,33 @@
 {% extends "housemanager/layout.html" %}
+{% load static %}
+
+{% block script %}
+    <script src="{% static 'housemanager/bills.js' %}"></script>
+{% endblock %}
+
 
 {% block body %}
 
-{% for bills in bills %}
 
-    <h5>{{bills.bill_name}}</h5>
-    <h5>{{bills.bill_amount}}</h5>
-    <h5>{{bills.bill_due}}</h5>
+<ul id="bills">
+    {% for bills in bills %}
+    <li>
+        <h5>{{bills.bill_name}}</h5>
+        <h5>{{bills.bill_amount}}</h5>
+        <h5>{{bills.bill_due}}</h5>
+    </li>
+    {% endfor %}
+</ul>
 
-{% endfor %}
+
+<button class="btn btn-primary" id="bill-button">Add Bill</button>
+
+
+
+
+
+
+
 
 
 {% endblock %}
