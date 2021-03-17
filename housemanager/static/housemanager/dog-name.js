@@ -1,5 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+    let back = document.querySelector("#back")
+
+    back.onclick = function () {
+      window.history.back();
+    }
+
     let submit = document.querySelector("#submit")
 
     let name = document.querySelector("#name").innerHTML

@@ -8,7 +8,7 @@
 
 
     {% for dog_details in dog_details %}
-        <h4 id="name">{{dog_details.dog_name}}</h4>
+        <h4 style="color: orange;" id="name">{{dog_details.dog_name}}</h4>
         <h5>{{dog_details.dog_name}} was born on {{dog_details.dog_birthdate}}</h5>
         <h5 id="weight-field">{{dog_details.dog_name}} weighs {{dog_details.dog_weight}} Kg's</h5>
         <button id="weight" class="btn-primary btn">Edit weight</button>
@@ -25,5 +25,7 @@
         <h5><a href="{% url 'todo'  %}">Todo: {{dog_todo.todo}}</a></h5>
     {% endfor %}
 </div>
+
+<button id="back" class="btn-primary btn">Back</button>
 
 {% endblock %}

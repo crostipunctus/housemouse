@@ -13,6 +13,7 @@ from .models import Dogs, Todo, Items, Baby, Vaccine, Bills
 from django.views.decorators.csrf import csrf_exempt
 import json 
 
+@login_required(login_url="/login")
 def index(request):
     dogs = Dogs.objects.all()
     todo = Todo.objects.all()
@@ -79,7 +80,7 @@ def register(request):
     else:
         return render(request, "housemanager/register.html")
 
-
+@login_required(login_url="/login")
 def dogs(request):
     dogs = Dogs.objects.all()
     todo = Todo.objects.filter(todo_cat="Dogs", done=False)
@@ -88,6 +89,7 @@ def dogs(request):
         "todo": todo
     })
 
+@login_required(login_url="/login")
 def dog_name(request, name):
     if request.method == "GET":
         dog_details = Dogs.objects.filter(dog_name=name)
@@ -108,7 +110,7 @@ def dog_name(request, name):
 
             })
    
-
+@login_required(login_url="/login")
 def baby(request):
     baby_todo = Todo.objects.filter(todo_cat="Baby", done=False)
     return render(request, "housemanager/baby.html", {
@@ -116,6 +118,7 @@ def baby(request):
     })
 
 @csrf_exempt
+@login_required(login_url="/login")
 def bills(request):
     bills = Bills.objects.all()
     return render(request, "housemanager/bills.html", {
@@ -123,6 +126,7 @@ def bills(request):
     })
 
 @csrf_exempt
+@login_required(login_url="/login")
 def add_bill(request):
     data = json.loads(request.body)
     name = data.get("name")
@@ -132,7 +136,7 @@ def add_bill(request):
     b.save()
     return JsonResponse({"message": "Bill added"}, status=201)
 
-
+@login_required(login_url="/login")
 def todo(request):
     todolist = Todo.objects.filter(done=False)
     print(todolist)
@@ -141,6 +145,7 @@ def todo(request):
     })
 
 @csrf_exempt
+@login_required(login_url="/login")
 def update_todo(request):
     data = json.loads(request.body)
     text = data.get("todo")
@@ -152,6 +157,7 @@ def update_todo(request):
 
 
 @csrf_exempt
+@login_required(login_url="/login")
 def add_dog(request):
     data = json.loads(request.body)
     name = data.get("dog_name")
@@ -163,6 +169,7 @@ def add_dog(request):
  
 
 @csrf_exempt
+@login_required(login_url="/login")
 def todo_done(request):
     
     data = json.loads(request.body)
@@ -172,6 +179,7 @@ def todo_done(request):
     return JsonResponse({"Message": "Todo done"}, status=201)
     
 @csrf_exempt
+@login_required(login_url="/login")
 def dog_weight(request):    
     data = json.loads(request.body)
     name = data.get("dog_name")

@@ -11,10 +11,10 @@
 
 <ul id="bills">
     {% for bills in bills %}
-    <li>
-        <h5>{{bills.bill_name}}</h5>
-        <h5>{{bills.bill_amount}}</h5>
-        <h5>{{bills.bill_due}}</h5>
+    <li class="listitem">
+        <h5>{{bills.bill_name | title}}</h5>
+        <h5>Amount: {{bills.bill_amount}}</h5>
+        <h5>Due on: {{bills.bill_due}}</h5>
     </li>
     {% endfor %}
 </ul>
