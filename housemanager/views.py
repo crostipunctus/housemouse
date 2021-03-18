@@ -136,6 +136,13 @@ def add_bill(request):
     b.save()
     return JsonResponse({"message": "Bill added"}, status=201)
 
+@csrf_exempt
+def bill_paid(request):
+    data = json.loads(request.body)
+    bill_id = data.get("id")
+    Bills.objects.get(id=bill_id).delete()
+    return JsonResponse({"message": "Bill paid"}, status=201)
+
 @login_required(login_url="/login")
 def todo(request):
     todolist = Todo.objects.filter(done=False)

@@ -11,10 +11,11 @@
 
 <ul id="bills">
     {% for bills in bills %}
-    <li class="listitem">
+    <li class="listitem" data-id={{bills.id}}>
         <h5>{{bills.bill_name | title}}</h5>
         <h5>Amount: {{bills.bill_amount}}</h5>
         <h5>Due on: {{bills.bill_due}}</h5>
+        <button data-id={{bills.id}} class="btn-primary" id="bill-paid">Bill paid</button>
     </li>
     {% endfor %}
 </ul>

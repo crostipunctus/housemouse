@@ -67,14 +67,33 @@ add_bill.onclick = function () {
 
     }
 
-
-
-
-
-
 }
+
+let paid_buts = document.querySelectorAll("#bill-paid")
+
+paid_buts.forEach(element => {
+
+  element.onclick = function () {
+    let done = document.querySelector(`.listitem[data-id="${element.dataset.id}"]`)
+    done.remove()
+
+    fetch('/bill_paid', {
+      method: 'POST',
+      body: JSON.stringify({
+        id: `${element.dataset.id}`
+      })
+    })
+    .then(response => response.text())
+    .then(response => console.log(response))
+
+  }
+
+
+
+
+})
        
-    
+
     
     
 
