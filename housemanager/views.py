@@ -111,11 +111,22 @@ def dog_name(request, name):
             })
    
 @login_required(login_url="/login")
+@csrf_exempt
 def baby(request):
-    baby_todo = Todo.objects.filter(todo_cat="Baby", done=False)
-    return render(request, "housemanager/baby.html", {
-        "baby_todo": baby_todo
-    })
+    if request.method == "GET":
+        baby = Baby.objects.all()
+        print(baby)
+        baby_todo = Todo.objects.filter(todo_cat="Baby", done=False)
+        return render(request, "housemanager/baby.html", {
+            "baby_todo": baby_todo,
+            "baby": baby
+        })
+    else:
+        data = json.loads(request.body)
+        note = data.get("note")
+        baby_note = Baby(baby_note=note)
+        baby_note.save()
+        return JsonResponse({"message": "Note added"}, status=201)
 
 @csrf_exempt
 @login_required(login_url="/login")

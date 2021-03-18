@@ -1,4 +1,10 @@
 {% extends "housemanager/layout.html" %}
+{% load static %}
+
+{% block script %}
+    <script src="{% static 'housemanager/baby.js' %}"></script>
+{% endblock %}
+
 
 {% block body %}
 
@@ -12,7 +18,20 @@
     <h5>No baby to-do's</h5>
 {% endif %}
 
+<label for="note">Add note:</label>
+<textarea class="form-control" id="note"></textarea>
 
+<button class="btn-primary" id="note-but">Submit</button>
+
+<div>
+    <ul id="baby-notes">
+        {% for baby in baby %}
+        <li>
+            <h5>{{baby.baby_note}}</h5>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
 
 {% endblock %}
 

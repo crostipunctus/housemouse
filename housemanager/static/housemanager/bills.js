@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
 let bill_list = document.querySelector("#bills")
 
-console.log(bill_list)
 
 let add_bill = document.querySelector("#bill-button")
 
