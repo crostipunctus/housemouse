@@ -11,12 +11,14 @@
         <h4 style="color: orange;" id="name">{{dog_details.dog_name}}</h4>
         <h5>{{dog_details.dog_name}} was born on {{dog_details.dog_birthdate}}</h5>
         <h5 id="weight-field">{{dog_details.dog_name}} weighs {{dog_details.dog_weight}} Kg's</h5>
-        <button id="weight" class="btn-primary btn">Edit weight</button>
+        <button id="weight" class="btn-primary btn">Update weight</button>
         <button id="submit" class="btn-primary btn">Submit</button>
     {% endfor %}
     
     {% if vaccine %}
+        <h5>{{vaccine.vaccine_dog}} took {{vaccine.vaccine_type}} vaccine on {{vaccine.vaccine_lastdate}}</h5>
         <h5>{{vaccine.vaccine_dog}}'s next vaccine is on {{vaccine.vaccine_duedate}}</h5>
+        <button class="btn btn-success" id="vacc-done">Done</button>
         
     {% endif %}
 

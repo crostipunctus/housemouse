@@ -5,7 +5,7 @@ from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from datetime import datetime
+from datetime import datetime, timedelta
 from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.views.decorators import csrf 
@@ -207,3 +207,12 @@ def dog_weight(request):
     Dogs.objects.filter(dog_name=name).update(dog_weight=weight)
     return JsonResponse({"message": "Success"}, status=201)
 
+@csrf_exempt
+def vac_done(request, dog):
+    data = json.loads(request.body)
+    dog_id = Dogs.objects.get(dog_name=dog)
+    Vaccine.objects.filter(vaccine_dog=dog_id).update(v_done=True)
+    date = datetime.now()
+
+    Vaccine.objects.filter(vaccine_dog=dog_id).update(vaccine_lastdate=date, vaccine_duedate=date+timedelta(365))
+    return JsonResponse({"message": "done"}, status=201)

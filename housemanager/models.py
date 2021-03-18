@@ -51,6 +51,7 @@ class Vaccine(models.Model):
     vaccine_type = models.CharField(max_length=200)
     vaccine_lastdate = models.DateField(auto_now=False, auto_now_add=False)
     vaccine_duedate = models.DateField(auto_now=False, auto_now_add=False)
+    v_done = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.vaccine_dog} took {self.vaccine_type} on {self.vaccine_lastdate}. Due on {self.vaccine_duedate}"

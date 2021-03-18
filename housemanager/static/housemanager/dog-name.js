@@ -65,7 +65,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
     }
 
+    let v_done = document.querySelector("#vacc-done")
 
+    let d_name = document.querySelector("#name")
+    
+    v_done.onclick = function () {
+
+      fetch(`/vac_done/${d_name.innerHTML}`, {
+        method: 'POST',
+        body: JSON.stringify({
+          d_name: `${d_name.innerHTML}`
+        })
+      })
+      .then(response => response.text())
+      .then(response => console.log(response))
+
+    }
 
 
 })

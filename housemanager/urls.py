@@ -21,7 +21,8 @@ urlpatterns = [
     path("todo_done", views.todo_done, name="todo_done"),
     path("dog_weight", views.dog_weight, name="dog-weight"),
     path("add_bill", views.add_bill, name="add-bill"),
-    path('bill_paid', views.bill_paid, name="bill-paid")
+    path('bill_paid', views.bill_paid, name="bill-paid"),
+    path('vac_done/<str:dog>', views.vac_done, name="vaccine-done")
     
     
 ] 
