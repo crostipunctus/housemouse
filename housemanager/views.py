@@ -12,6 +12,7 @@ from django.views.decorators import csrf
 from .models import Dogs, Todo, Items, Baby, Vaccine, Bills
 from django.views.decorators.csrf import csrf_exempt
 import json 
+from django.core.paginator import Paginator
 
 @login_required(login_url="/login")
 def index(request):
@@ -132,8 +133,13 @@ def baby(request):
 @login_required(login_url="/login")
 def bills(request):
     bills = Bills.objects.all()
+    paginator = Paginator(bills, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     return render(request, "housemanager/bills.html", {
         "bills": bills,
+        "page_obj": page_obj
     })
 
 @csrf_exempt
