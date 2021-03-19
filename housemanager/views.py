@@ -213,6 +213,5 @@ def vac_done(request, dog):
     dog_id = Dogs.objects.get(dog_name=dog)
     Vaccine.objects.filter(vaccine_dog=dog_id).update(v_done=True)
     date = datetime.now()
-
     Vaccine.objects.filter(vaccine_dog=dog_id).update(vaccine_lastdate=date, vaccine_duedate=date+timedelta(365))
     return JsonResponse({"message": "done"}, status=201)
