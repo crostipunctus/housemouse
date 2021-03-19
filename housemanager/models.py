@@ -1,11 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from datetime import datetime
+from django.contrib.auth.models import User
+
 
 from django.db.models.deletion import CASCADE
 
 # Create your models here.
-
 
 class Dogs(models.Model):
     dog_name = models.CharField(max_length=200)
@@ -20,10 +21,16 @@ class Dogs(models.Model):
 
 class Baby(models.Model):
     baby_name = models.CharField(max_length=100, default="Iora")
-    baby_note = models.TextField(blank=True)
 
     def __str__(self):
         return f"{self.baby_name}"
+
+class Notes(models.Model):
+    note = models.TextField(blank=True)
+    user_note = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.note}"
 
 
 class Items(models.Model):
