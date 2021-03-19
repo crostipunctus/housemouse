@@ -27,7 +27,12 @@
 
 <div>
     <ul id="baby-notes">
-        
+        {% for notes in notes%}
+        <li>
+            <h5>{{notes.note}} by {{notes.user_note}}</h5>
+        </li>
+
+        {% endfor %}
     </ul>
 </div>
 

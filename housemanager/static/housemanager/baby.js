@@ -2,6 +2,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     let note = document.querySelector("#note")
+
+    let user = document.querySelector("#user")
+
+    console.log(user)
     
     let note_submit = document.querySelector("#note-but")
 
@@ -20,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
             method: 'POST',
             body: JSON.stringify({
                 note:`${note.value}`,
+                
             })
         })
         .then(response => response.text())
@@ -31,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let new_note = document.createElement("li")
         let h5 = document.createElement("h5")
 
-        h5.innerHTML = note.value
+        h5.innerHTML = `${note.value} by ${user.innerHTML}`
 
         new_note.appendChild(h5)
         notes.appendChild(new_note)

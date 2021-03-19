@@ -29,14 +29,14 @@
               <ul class="nav">
                 {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-item" href="{{ user.username }}"></a>
+                        <a class="nav-link" id="user" >{{user}}</a>
                     </li>
                 {% endif %}
                 
                 {% if user.is_authenticated %}
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                        <a class="nav-link" href="{% url 'logout' %}">(Not {{user}})?: Log Out</a>
                     </li>
                     
                 

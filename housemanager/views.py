@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.views.decorators import csrf 
-from .models import Dogs, Todo, Items, Baby, Vaccine, Bills
+from .models import Dogs, Notes, Todo, Items, Baby, Vaccine, Bills
 from django.views.decorators.csrf import csrf_exempt
 import json 
 from django.core.paginator import Paginator
@@ -116,16 +116,18 @@ def dog_name(request, name):
 def baby(request):
     if request.method == "GET":
         baby = Baby.objects.all()
-        print(baby)
+        notes = Notes.objects.all()
         baby_todo = Todo.objects.filter(todo_cat="Baby", done=False)
         return render(request, "housemanager/baby.html", {
             "baby_todo": baby_todo,
-            "baby": baby
+            "baby": baby,
+            "notes": notes
         })
     else:
         data = json.loads(request.body)
         note = data.get("note")
-        baby_note = Baby(baby_note=note)
+        user = request.user
+        baby_note = Notes(note=note, user_note=user)
         baby_note.save()
         return JsonResponse({"message": "Note added"}, status=201)
 
