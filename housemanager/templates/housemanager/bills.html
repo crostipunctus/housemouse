@@ -8,6 +8,12 @@
 
 {% block body %}
 
+{% if bills_todo %}
+   {% for bills_todo in bills_todo %} 
+    <h5>Bill to-do's: {{bills_todo.todo}}</h5>
+    {% endfor %}
+
+{% endif %}
 
 <ul id="bills">
     {% for bills in page_obj %}

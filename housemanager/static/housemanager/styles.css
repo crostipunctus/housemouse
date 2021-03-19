@@ -138,3 +138,10 @@ a:hover{
 #vacc-done {
     margin-left: 20px;
 }
+
+#user {
+    color: orange;
+    font-size: 15pt;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+}

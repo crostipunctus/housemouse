@@ -135,13 +135,15 @@ def baby(request):
 @login_required(login_url="/login")
 def bills(request):
     bills = Bills.objects.all()
+    bills_todo = Todo.objects.filter(todo_cat="Bills", done=False)
     paginator = Paginator(bills, 10)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
     return render(request, "housemanager/bills.html", {
         "bills": bills,
-        "page_obj": page_obj
+        "page_obj": page_obj,
+        "bills_todo": bills_todo
     })
 
 @csrf_exempt
