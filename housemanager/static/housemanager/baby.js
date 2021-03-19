@@ -36,7 +36,8 @@ document.addEventListener('DOMContentLoaded', function() {
         new_note.appendChild(h5)
         notes.appendChild(new_note)
 
-
+        note.value = "";
+        note_submit.disabled = true;
     }
 
 

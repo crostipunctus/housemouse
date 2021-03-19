@@ -126,3 +126,11 @@ a:hover{
     margin: 20px;
 }
 
+#note-div {
+    width: 80%;
+    margin: 20px;
+}
+
+#note-but {
+    margin-left: 20px;
+}
