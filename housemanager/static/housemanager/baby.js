@@ -19,7 +19,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     note_submit.onclick = function () {
        
-
+        if (note.value === "")
+        {
+            alert("New note cannot be blank!")
+        }
+        else{
         fetch('/baby', {
             method: 'POST',
             body: JSON.stringify({
@@ -44,6 +48,42 @@ document.addEventListener('DOMContentLoaded', function() {
         note.value = "";
         note_submit.disabled = true;
     }
+    }
+
+
+    //countdown implementation learned from W3 schools
+    var countdowndate = new Date("June 15, 2021 12:00:00").getTime();
+
+    
+    let x = setInterval(function() {
+
+      let now = new Date().getTime();
+    
+     
+      let remaining_time = countdowndate - now;
+    
+
+      let days = Math.floor(remaining_time / (1000 * 60 * 60 * 24));
+      let hours = Math.floor((remaining_time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      let minutes = Math.floor((remaining_time % (1000 * 60 * 60)) / (1000 * 60));
+      let seconds = Math.floor((remaining_time % (1000 * 60)) / 1000);
+    
+   
+      document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+      + minutes + "m " + seconds + "s ";
+    
+   
+      if (remaining_time < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "IT'S HERE!!!";
+      }
+    }, 1000);
+
+
+
+
+
+
 
 
 })

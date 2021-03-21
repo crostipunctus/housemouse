@@ -8,15 +8,23 @@
 
 {% block body %}
 
-{% for baby_todo in baby_todo %}
+<div id="count-div">
+    <h5>BABY COUNTDOWN:</h5>
+    <p id="countdown"></p>
+</div>
 
-    <h5>Baby to-do's: {{baby_todo.todo}}</h5>
+<div id="baby-todo">
+    {% for baby_todo in baby_todo %}
 
-{% endfor %}
+        <h5>Baby to-do's:</h5> 
+        <h5> - {{baby_todo.todo}}</h5>
 
-{% if not baby_todo %}
-    <h5>No baby to-do's</h5>
-{% endif %}
+    {% endfor %}
+
+    {% if not baby_todo %}
+        <h5>No baby to-do's</h5>
+    {% endif %}
+</div>
 
 <div id="note-div">
     <label for="note"><h6>Add note:</h5></label>
@@ -29,7 +37,8 @@
     <ul id="baby-notes">
         {% for notes in notes%}
         <li>
-            <h5>{{notes.note}} by {{notes.user_note}}</h5>
+            <h5>{{notes.note}} by {{notes.user_note | title}}</h5>
+            <h6></h6>
         </li>
 
         {% endfor %}

@@ -145,3 +145,17 @@ a:hover{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     
 }
+
+#countdown {
+    font-size: 50pt;
+    color: peachpuff;
+    margin-left: 20px;
+    
+}
+
+
+
+#baby-todo {
+    border: 2px solid white;
+    margin: 20px;
+}
