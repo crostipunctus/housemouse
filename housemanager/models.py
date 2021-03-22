@@ -70,6 +70,7 @@ class Bills(models.Model):
     bill_name = models.CharField(max_length=200)
     bill_amount = models.IntegerField(default=0)
     bill_due = models.DateField(auto_now=False, auto_now_add=False)
+    bill_paid = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.bill_name}"

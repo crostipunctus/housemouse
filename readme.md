@@ -13,7 +13,7 @@ Here are the main categories that the app offers:
 Files:
 
 html files:
-1. baby.html: Page displaying baby related info with a countdown to the due date. 
+1. baby.html: Page displaying baby related info with a countdown to the due date, note field and notes. 
 2. bills.html: List of upcoming bill payment details with pagination to limit bills to 10 per page.
 3. dog_name.html: Details of specific dog (you get here from dogs.html page) including vaccination details, date of birth and weight. Weight can be updated. Vaccine can be marked as done, at which point the vaccine dates will update by a year. 
 4. dogs.html: List of dogs with button to add more dogs, with weight, DoB and vaccine details. 
@@ -24,4 +24,9 @@ html files:
 9. todo.html: Todo list with button to add todo item. Each item as a checkbox to mark its completion.
 
 js files:
-1. baby.js: Countdown, baby-related todo's. Text field to add note and space where the note displays.
+1. baby.js: Countdown and note adding + note appearing with JS.
+2. bills.js: Bill-paid button and add bill button with JS. 
+3. dog-name.js: Update weight button, vaccine done button and a back button to go back to the dogs page, all with JS. 
+4. dogs.js: Button to add a dog using JS.
+5. styles.css: style sheet.
+6. todo.js: Adding new note, and marking note as done with JS. 

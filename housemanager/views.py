@@ -8,7 +8,6 @@ from django.contrib.auth.decorators import login_required
 from datetime import datetime, timedelta
 from django.core.paginator import Paginator
 from django.http import JsonResponse
-from django.views.decorators import csrf 
 from .models import Dogs, Notes, Todo, Items, Baby, Vaccine, Bills
 from django.views.decorators.csrf import csrf_exempt
 import json 
