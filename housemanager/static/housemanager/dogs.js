@@ -44,9 +44,35 @@ document.addEventListener('DOMContentLoaded', function() {
         weight.style.marginTop = "25px"
         weight.classList.add("form-control")
 
+        let v_type = document.createElement("input")
+        v_type.type = "text";
+        v_type.id = "v_type";
+        v_type.placeholder = "Vaccine type"
+        v_type.style.marginTop = "25px"
+        v_type.classList.add("form-control")
+
+        v_lastdate = document.createElement("input")
+        v_lastdate.type = "date";
+        v_lastdate.id = "v_lastdate";
+        v_lastdate.placeholder = "Last vaccine date"
+        v_lastdate.style.marginTop = "25px"
+        v_lastdate.classList.add("form-control")
+
+        v_due = document.createElement("input")
+        v_due.type = "date";
+        v_due.id = "v_duedate";
+        v_due.placeholder = "Vaccine due date"
+        v_due.style.marginTop = "25px"
+        v_due.classList.add("form-control")
+
+
+
         dog_form.appendChild(di)
         dog_form.appendChild(weight) 
         dog_form.appendChild(bday)
+        dog_form.appendChild(v_type)
+        dog_form.appendChild(v_lastdate)
+        dog_form.appendChild(v_due)
         new_div.appendChild(dog_form)
         dog_list.append(new_div)
 
@@ -54,12 +80,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
         dog_but.onclick = function () {
 
-            fetch('/add-dog', {
+            fetch('/add_dog', {
                 method: 'POST', 
                 body: JSON.stringify({
                   dog_name: `${di.value}`,
                   dog_date: `${bday.value}`,
-                  dog_weight: `${weight.value}`
+                  dog_weight: `${weight.value}`,
+                  v_type: `${v_type.value}`,
+                  v_lastdate: `${v_lastdate.value}`,
+                  v_due: `${v_due.value}`
                 })
                 
               })

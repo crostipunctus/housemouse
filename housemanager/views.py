@@ -133,7 +133,7 @@ def baby(request):
 @csrf_exempt
 @login_required(login_url="/login")
 def bills(request):
-    bills = Bills.objects.all()
+    bills = Bills.objects.filter(bill_paid=False)
     bills_todo = Todo.objects.filter(todo_cat="Bills", done=False)
     paginator = Paginator(bills, 10)
     page_number = request.GET.get('page')
@@ -160,7 +160,7 @@ def add_bill(request):
 def bill_paid(request):
     data = json.loads(request.body)
     bill_id = data.get("id")
-    Bills.objects.get(id=bill_id).delete()
+    Bills.objects.filter(id=bill_id).update(bill_paid=True)
     return JsonResponse({"message": "Bill paid"}, status=201)
 
 @login_required(login_url="/login")
@@ -189,9 +189,15 @@ def add_dog(request):
     data = json.loads(request.body)
     name = data.get("dog_name")
     date = data.get("dog_date")
-    weight = data.get("dog_weight") 
+    weight = data.get("dog_weight")
+    v_type = data.get("v_type")
+    v_lastdate = data.get("v_lastdate")
+    v_due = data.get("v_due")   
     new_dog = Dogs(dog_name=name, dog_birthdate = date, dog_weight = weight)
     new_dog.save()
+    dog_id = Dogs.objects.get(dog_name=name)
+    v = Vaccine(vaccine_dog=dog_id, vaccine_type=v_type, vaccine_lastdate=v_lastdate, vaccine_duedate=v_due) 
+    v.save()
     return JsonResponse({"message": "Dog added."}, status=201)
  
 
