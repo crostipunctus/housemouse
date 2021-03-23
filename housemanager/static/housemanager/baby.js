@@ -52,7 +52,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     //countdown implementation learned from W3 schools
-    var countdowndate = new Date("June 15, 2021 12:00:00").getTime();
+    function countdown (due_date) {
+
+    let countdowndate = new Date(`${due_date}`).getTime();
 
     
     let x = setInterval(function() {
@@ -79,9 +81,25 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }, 1000);
 
+    }
 
+    let add_form = document.querySelector("#add_due_form")
+    
 
+    let add_date = document.querySelector("#add_due")
+    add_date.onclick = function () {
 
+        add_form.style.display = "none"
+
+        let due_date = add_form.value
+
+        countdown(due_date)
+
+    
+            
+        }
+
+    
 
 
 
