@@ -10,14 +10,20 @@
 
 
 
+<input type="text" id="add_due_form" class="form-control" placeholder="Enter due date for baby countdown">
+<button id="add_due" class="btn-primary">Add baby due date</button>
+<label style="color: white; margin: 10px"  for="add_due_form">Format: mmm, dd, yyyy, time. Example: Jun 15, 2021, 12:00:00"</label>
+
+
 <div id="count-div">
-    <input type="text" id="add_due_form" class="form-control" placeholder="Enter due date for baby countdown">
+    
     <h5>BABY COUNTDOWN:</h5>
     <p id="countdown"></p>
+    
+    <button id="duedate" class="btn-primary">Change due date</button>
 </div>
 
-<button id="add_due" class="btn-primary">Add due date</button>
-<button id="duedate" class="btn-primary">Change due date</button>
+
 
 <div id="baby-todo">
     {% for baby_todo in baby_todo %}

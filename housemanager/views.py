@@ -126,8 +126,10 @@ def baby(request):
         data = json.loads(request.body)
         note = data.get("note")
         user = request.user
+       
         baby_note = Notes(note=note, user_note=user)
         baby_note.save()
+      
         return JsonResponse({"message": "Note added"}, status=201)
 
 @csrf_exempt
