@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
             alert("New note cannot be blank!")
         }
         else{
-        fetch('/baby', {
+        fetch('/note_add', {
             method: 'POST',
             body: JSON.stringify({
                 note:`${note.value}`,
