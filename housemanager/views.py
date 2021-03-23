@@ -93,9 +93,7 @@ def dogs(request):
 def dog_name(request, name):
     if request.method == "GET":
         dog_details = Dogs.objects.filter(dog_name=name)
-        dog_id = Dogs.objects.get(dog_name = name)
-        
-    
+        dog_id = Dogs.objects.get(dog_name = name)    
         try:
             dog_vac = Vaccine.objects.get(vaccine_dog = dog_id)
             return render(request, "housemanager/dog_name.html", {
@@ -125,12 +123,23 @@ def baby(request):
     else:
         data = json.loads(request.body)
         note = data.get("note")
-        user = request.user
-       
+        user = request.user   
         baby_note = Notes(note=note, user_note=user)
-        baby_note.save()
-      
+        baby_note.save()    
         return JsonResponse({"message": "Note added"}, status=201)
+
+@csrf_exempt
+def baby_add(request):
+    name = request.POST["baby_name"]
+    due_date = request.POST["due_date"]
+    if Baby(baby_name=name, baby_due=due_date):
+        return render(request, "housemanager/baby.html", {
+            "message": "Baby already exists"
+        })
+    else:
+        b = Baby(baby_name=name, baby_due=due_date)
+        b.save()
+        return HttpResponseRedirect(reverse("baby"))
 
 @csrf_exempt
 @login_required(login_url="/login")

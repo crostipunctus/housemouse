@@ -90,41 +90,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     }
 
+    let s = document.querySelector("#submit_baby")
+    let f = document.querySelector("#baby_form")
+
+    s.onclick = function () {
+        f.style.display = "none"
+
+    }
 
     
-    let add_form = document.querySelector("#add_due_form")
-    
-
-    let add_date = document.querySelector("#add_due")
-    add_date.onclick = function () {
-
-        count_div.style.display = "block"
-
-        add_form.style.display = "none"
-
-        let due_date = add_form.value
-
-        fetch('/baby', {
-            method: 'POST',
-            body: JSON.stringify({
-                due_date:`${due_date}`,
-                
-            })
-        })
-        .then(response => response.text())
-        .then(response => console.log(response))
-
-
-
-        countdown(due_date)
-
-       
-
-    
-            
-        }
-
-    
+   
 
 
 

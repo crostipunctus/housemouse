@@ -20,7 +20,7 @@ class Dogs(models.Model):
 
 
 class Baby(models.Model):
-    baby_name = models.CharField(max_length=100, default="Iora")
+    baby_name = models.CharField(max_length=100)
     baby_due = models.DateField(default=datetime.now, blank=True)
 
     def __str__(self):
