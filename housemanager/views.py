@@ -124,7 +124,7 @@ def baby(request):
         baby = Baby.objects.all()
         notes = Notes.objects.all()
         baby_todo = Todo.objects.filter(todo_cat="Baby", done=False)
-        if Baby(baby_name=name, baby_due=due_date):
+        if Baby.objects.filter(baby_name=name, baby_due=due_date).exists():
             return JsonResponse({"message": "Baby already exists"}, status=201)
         else:
             b = Baby(baby_name=name, baby_due=due_date)
