@@ -8,25 +8,13 @@
 
 {% block body %}
 
-
-<form id="baby_form" action="{% url 'baby' %}" method="POST">
-    <input type="text" id="baby_name" name="baby_name" class="form-control" placeholder="Baby name">
-    <input type="date" id="due_date" name="due_date" class="form-control" placeholder="Due date">
-    <input type="submit" class="btn-primary" value="Add baby" id="submit_baby">
-</form>
-
-{% if message %}
-    {{message}}
-{% endif %}
-
-<div id="count-div">
-    
-    <h5>BABY COUNTDOWN:</h5>
-    <p id="countdown"></p>
-    
-    <button id="duedate" class="btn-primary">Change due date</button>
-</div>
-
+<ul>
+<li>
+    {% for baby in baby %}
+    <h5><a href="{% url 'baby_name' baby.baby_name %}">{{baby.baby_name}}</a></h5>
+    {% endfor %}
+</li>
+</ul>
 
 
 <div id="baby-todo">
@@ -42,24 +30,14 @@
     {% endif %}
 </div>
 
-<div id="note-div">
-    <label for="note"><h6>Add note:</h5></label>
-    <textarea class="form-control" id="note"></textarea>
+<form id="baby_form" action="{% url 'baby' %}" method="POST">
+    <input type="text" id="baby_name" name="baby_name" class="form-control" placeholder="Baby name">
+    <input type="date" id="due_date" name="due_date" class="form-control" placeholder="Due date">
+    <input type="submit" class="btn-primary" value="Add baby" id="submit_baby">
+</form>
 
-    <button class="btn-primary" id="note-but">Submit</button>
-</div>
 
-<div>
-    <ul id="baby-notes">
-        {% for notes in notes%}
-        <li>
-            <h5>{{notes.note}} by {{notes.user_note | title}}</h5>
-            <h6></h6>
-        </li>
 
-        {% endfor %}
-    </ul>
-</div>
 
 {% endblock %}
 

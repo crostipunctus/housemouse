@@ -113,12 +113,10 @@ def dog_name(request, name):
 def baby(request):
     if request.method == "GET":
         baby = Baby.objects.all()
-        notes = Notes.objects.all()
         baby_todo = Todo.objects.filter(todo_cat="Baby", done=False)
         return render(request, "housemanager/baby.html", {
             "baby_todo": baby_todo,
             "baby": baby,
-            "notes": notes
         })
     else:
         name = request.POST["baby_name"]
@@ -127,11 +125,23 @@ def baby(request):
         notes = Notes.objects.all()
         baby_todo = Todo.objects.filter(todo_cat="Baby", done=False)
         if Baby(baby_name=name, baby_due=due_date):
-            return JsonResponse({"message": "Baby exists"}, status=201)
+            return JsonResponse({"message": "Baby already exists"}, status=201)
         else:
             b = Baby(baby_name=name, baby_due=due_date)
             b.save()
             return HttpResponseRedirect(reverse("baby"))
+
+  
+
+@csrf_exempt
+def baby_name(request, baby_name):
+    if request.method == "GET":
+        notes = Notes.objects.all()
+        baby = Baby.objects.get(baby_name=baby_name)
+        return render(request, "housemanager/baby_name.html", {
+            "notes": notes
+        })
+
         
 
 @csrf_exempt
