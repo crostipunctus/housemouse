@@ -2,6 +2,10 @@
 
 document.addEventListener('DOMContentLoaded', function() {
 
+let form_div = document.querySelector("#add_form")  
+
+form_div.style.display = "none";
+
 let names = document.querySelector("#names")
 
 let baby_name = document.querySelector("#baby_name")
@@ -10,6 +14,9 @@ let date = document.querySelector("#due_date")
 let add_baby = document.querySelector("#submit_baby")
 
 add_baby.onclick = function () {
+    form_div.style.display = "block";
+
+    add_baby.onclick = function () {    
     
     fetch('/baby', {
         method: 'POST',
@@ -35,7 +42,7 @@ add_baby.onclick = function () {
 
 }
 
-
+}
 
 
 })

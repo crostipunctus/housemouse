@@ -137,9 +137,14 @@ def baby_name(request, baby_name):
         notes = Notes.objects.all()
         baby = Baby.objects.get(baby_name=baby_name)
         return render(request, "housemanager/baby_name.html", {
-            "notes": notes
+            "notes": notes,
+            "baby": baby
         })
 
+    else:
+        baby = Baby.objects.get(baby_name=baby_name)
+        print(baby)
+        return JsonResponse("Ok", safe=False)
         
 
 @csrf_exempt
