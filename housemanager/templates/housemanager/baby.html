@@ -8,13 +8,12 @@
 
 {% block body %}
 
-<ul>
-<li>
-    {% for baby in baby %}
-    <h5><a href="{% url 'baby_name' baby.baby_name %}">{{baby.baby_name}}</a></h5>
-    {% endfor %}
-</li>
-</ul>
+<div id="names">
+        {% for baby in baby %}
+        <h5><a href="{% url 'baby_name' baby.baby_name %}">{{baby.baby_name}}</a></h5>
+        {% endfor %}
+</div>    
+
 
 
 <div id="baby-todo">

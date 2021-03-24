@@ -119,17 +119,15 @@ def baby(request):
             "baby": baby,
         })
     else:
-        name = request.POST["baby_name"]
-        due_date = request.POST["due_date"]
-        baby = Baby.objects.all()
-        notes = Notes.objects.all()
-        baby_todo = Todo.objects.filter(todo_cat="Baby", done=False)
-        if Baby.objects.filter(baby_name=name, baby_due=due_date).exists():
-            return JsonResponse({"message": "Baby already exists"}, status=201)
+        data = json.loads(request.body)
+        name = data.get("name")
+        date = data.get("date")
+        if Baby.objects.filter(baby_name=name).exists():
+            return JsonResponse("Baby already exists", safe=False)
         else:
-            b = Baby(baby_name=name, baby_due=due_date)
+            b = Baby(baby_name=name, baby_due=date)
             b.save()
-            return HttpResponseRedirect(reverse("baby"))
+            return JsonResponse( "Baby added", safe=False)
 
   
 
