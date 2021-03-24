@@ -35,6 +35,9 @@ function countdown (due_date) {
 
 document.addEventListener('DOMContentLoaded', function() {
 
+    let name = document.querySelector("#name")
+
+    console.log(name)
 
     let note = document.querySelector("#note")
 
@@ -86,6 +89,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     }
 
+    fetch(`/baby_name/${name.innerHTML}`, {
+        method: 'POST',
+        body: JSON.stringify({
+            name: `${name.innerHTML}`
+            
+        })
+    })
+    .then(response => response.json())
+    .then(response => {
+
+        countdown(response)
+
+
+    })
     
     
 

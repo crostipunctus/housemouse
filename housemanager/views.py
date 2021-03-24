@@ -143,8 +143,7 @@ def baby_name(request, baby_name):
 
     else:
         baby = Baby.objects.get(baby_name=baby_name)
-        print(baby)
-        return JsonResponse("Ok", safe=False)
+        return JsonResponse(f"{baby.baby_due}", safe=False)
         
 
 @csrf_exempt
