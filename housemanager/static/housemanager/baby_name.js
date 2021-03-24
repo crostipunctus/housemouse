@@ -37,18 +37,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let name = document.querySelector("#name")
 
-    console.log(name)
+
 
     let note = document.querySelector("#note")
 
     let user = document.querySelector("#user")
 
-    console.log(user)
-    
+ 
     let note_submit = document.querySelector("#note-but")
 
 
-    console.log(note_submit)
+ 
 
     note_submit.disabled = true;
 
@@ -74,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => console.log(response))
 
         let notes = document.querySelector("#baby-notes")
-        console.log(notes)
+      
 
         let new_note = document.createElement("li")
         let h5 = document.createElement("h5")
@@ -104,9 +103,38 @@ document.addEventListener('DOMContentLoaded', function() {
 
     })
     
+    let change = document.querySelector("#duedate")
+
+    let c_div = document.querySelector("#count-div")
+    
+    change.onclick = function () {
+
+    let change_form = document.createElement("input")
+    change_form.type = "date"
+    change_form.classList.add("form-control")
+    change_form.id = "change_form"
+
+    c_div.append(change_form)
+
+    change.onclick = function () {
     
 
+    fetch("/change_due_date", {
+        method: 'POST',
+        body: JSON.stringify({
+            name: `${name.innerHTML}`,
+            date: `${change_form.value}`
 
+            
+        })
+    })
+    .then(response => response.json())
+    .then(response => {
+        countdown(response)
+    })
 
+    }
+   
+}
 
 })

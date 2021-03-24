@@ -144,6 +144,16 @@ def baby_name(request, baby_name):
     else:
         baby = Baby.objects.get(baby_name=baby_name)
         return JsonResponse(f"{baby.baby_due}", safe=False)
+
+@csrf_exempt
+def change_due_date(request):
+    data = json.loads(request.body)
+    name = data.get("name")
+    date = data.get("date")
+    print(date)
+    Baby.objects.filter(baby_name=name).update(baby_due=date)
+    
+    return JsonResponse(f"{date}", safe=False)
         
 
 @csrf_exempt

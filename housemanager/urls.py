@@ -25,6 +25,7 @@ urlpatterns = [
     path('bill_paid', views.bill_paid, name="bill-paid"),
     path('vac_done/<str:dog>', views.vac_done, name="vaccine-done"),
     path("note_add", views.note_add, name="note_add"),
+    path("change_due_date", views.change_due_date, name="change_due_date")
  
     
     
