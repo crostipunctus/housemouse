@@ -27,7 +27,7 @@
 <div>
     <ul id="baby-notes">
         {% for notes in notes%}
-        <li id={{notes.id}}>
+        <li id="note-list" data-id={{notes.id}} class="note-list">
             <h5>{{notes.note}} by {{notes.user_note | title}}</h5>
             <button data-id={{notes.id}} id="remove-note" class="btn btn-danger">Remove note</button>
         </li>

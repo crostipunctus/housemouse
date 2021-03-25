@@ -175,6 +175,15 @@ def note_add(request):
     baby_note.save()    
     return JsonResponse({"message": "Note added"}, status=201)
 
+@csrf_exempt
+def rem_note(request):
+    data = json.loads(request.body)
+    id = data.get("id")
+    print(id)
+    Notes.objects.filter(id=id).delete()
+    return JsonResponse(f"{id} deleted", safe=False)
+
+
     
 
 @csrf_exempt

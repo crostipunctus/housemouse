@@ -92,14 +92,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         note.value = "";
         note_submit.disabled = true;
+
+        location.reload();
+      return false;
     }
     
-        let buttons = document.querySelectorAll("#remove-note")
-        console.log(buttons)
-
-        buttons.forEach(element => {
-            console.log(element.dataset.id)
-        })
+        
 
 
     }
@@ -119,7 +117,31 @@ document.addEventListener('DOMContentLoaded', function() {
 
     })
     
-    
+    let buttons = document.querySelectorAll("#remove-note")
+        console.log(buttons)
+
+        buttons.forEach(element => {
+            console.log(element.dataset.id)
+            
+            element.onclick = function () {
+
+            let rem = document.querySelector(`.note-list[data-id="${element.dataset.id}"]`)
+            rem.remove()
+
+            fetch('/rem_note', {
+                method: 'POST',
+                body: JSON.stringify({
+                    id: `${element.dataset.id}`
+                    
+                })
+            })
+            .then(response => response.json())
+            .then(response => console.log(response))
+
+
+            }
+        
+        })
    
 
 
