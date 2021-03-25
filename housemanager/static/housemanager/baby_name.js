@@ -77,10 +77,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
         let new_note = document.createElement("li")
         let h5 = document.createElement("h5")
+        let remove_note = document.createElement("button")
+        remove_note.classList.add("btn")
+        remove_note.classList.add("btn-danger")
+        remove_note.id = "remove-note"
+        remove_note.innerHTML = "Remove note"
+
 
         h5.innerHTML = `${note.value} by ${user.innerHTML}`
 
         new_note.appendChild(h5)
+        new_note.append(remove_note)
         notes.appendChild(new_note)
 
         note.value = "";
@@ -98,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(response => response.json())
     .then(response => {
 
-        countdown(response)
+    countdown(response)
 
 
     })
