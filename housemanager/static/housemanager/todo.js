@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
 
   add_todo.style.display = "none";
-   
+    
   let checkboxes = document.querySelectorAll("#todo-done")
   
 
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     element.onclick = function () {
       element.checked == true;
       let id = element.dataset.id
-      console.log(id)
+  
       let done_do = document.querySelector(`.listitem[data-id="${element.dataset.id}"]`)
       done_do.remove()
       
@@ -101,8 +101,6 @@ document.addEventListener('DOMContentLoaded', function() {
   
 
       add_todo.onclick = function() {
-
-        console.log(options.value)
        
         fetch('/update_todo', {
           method: 'POST', 
@@ -123,6 +121,9 @@ document.addEventListener('DOMContentLoaded', function() {
       f.style.display = "none";
       add_todo.style.display = "none";
       create_todo.style.display = "block";
+
+      location.reload();
+        return false;
       
       }
 

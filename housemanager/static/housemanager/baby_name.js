@@ -3,7 +3,6 @@
 function countdown (due_date) {
 
     let countdowndate = new Date(`${due_date}`).getTime();
-
     
     let x = setInterval(function() {
 
@@ -37,17 +36,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let name = document.querySelector("#name")
 
-
-
     let note = document.querySelector("#note")
 
     let user = document.querySelector("#user")
 
- 
     let note_submit = document.querySelector("#note-but")
-
-
- 
 
     note_submit.disabled = true;
 
@@ -94,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
         note_submit.disabled = true;
 
         location.reload();
-      return false;
+        return false;
     }
     
         
@@ -121,7 +114,6 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log(buttons)
 
         buttons.forEach(element => {
-            console.log(element.dataset.id)
             
             element.onclick = function () {
 

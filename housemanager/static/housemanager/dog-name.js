@@ -12,12 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let weight_field = document.querySelector("#weight-field")
 
-    console.log(weight_field)
-
     submit.style.display = "none"
 
     let weight = document.querySelector("#weight")
-    console.log(weight)
 
     let w_field = document.querySelector("#weight-field") 
 
@@ -37,8 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
         i.placeholder = "Enter weight"
         i.classList.add("form-control")
         i.style.marginTop = "25px"
-
-        
 
         form.appendChild(i)
         w_field.appendChild(form)
@@ -91,8 +86,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let remove = document.querySelector("#remove")
 
     let dg_name = document.querySelector("#name")
-
-    console.log(remove)
 
     remove.onclick = function () {
 

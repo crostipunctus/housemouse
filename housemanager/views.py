@@ -28,13 +28,10 @@ def index(request):
     
 def login_view(request):
     if request.method == "POST":
-
-        # Attempt to sign user in
         username = request.POST["username"]
         password = request.POST["password"]
         user = authenticate(request, username=username, password=password)
 
-        # Check if authentication successful
         if user is not None:
             login(request, user)
             return HttpResponseRedirect(reverse("index"))
@@ -160,7 +157,6 @@ def change_due_date(request):
     data = json.loads(request.body)
     name = data.get("name")
     date = data.get("date")
-    print(date)
     Baby.objects.filter(baby_name=name).update(baby_due=date)
     
     return JsonResponse(f"{date}", safe=False)
@@ -179,7 +175,6 @@ def note_add(request):
 def rem_note(request):
     data = json.loads(request.body)
     id = data.get("id")
-    print(id)
     Notes.objects.filter(id=id).delete()
     return JsonResponse(f"{id} deleted", safe=False)
 
@@ -194,7 +189,6 @@ def bills(request):
     paginator = Paginator(bills, 10)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-
     return render(request, "housemanager/bills.html", {
         "bills": bills,
         "page_obj": page_obj,
@@ -222,7 +216,6 @@ def bill_paid(request):
 @login_required(login_url="/login")
 def todo(request):
     todolist = Todo.objects.filter(done=False)
-    print(todolist)
     return render(request, "housemanager/todo.html", {
         "todo": todolist
     })
@@ -260,11 +253,9 @@ def add_dog(request):
 @csrf_exempt
 @login_required(login_url="/login")
 def todo_done(request):
-    
     data = json.loads(request.body)
     todo_id = data.get("id")
-    Todo.objects.filter(id=todo_id).update(done=True)
-    
+    Todo.objects.filter(id=todo_id).update(done=True)  
     return JsonResponse({"Message": "Todo done"}, status=201)
     
 @csrf_exempt
@@ -272,15 +263,12 @@ def todo_done(request):
 def dog_weight(request):    
     data = json.loads(request.body)
     name = data.get("dog_name")
-    print(name)
     weight = data.get("weight")
-    print(weight)
     Dogs.objects.filter(dog_name=name).update(dog_weight=weight)
     return JsonResponse({"message": "Success"}, status=201)
 
 @csrf_exempt
 def vac_done(request, dog):
-    data = json.loads(request.body)
     dog_id = Dogs.objects.get(dog_name=dog)
     Vaccine.objects.filter(vaccine_dog=dog_id).update(v_done=True)
     date = datetime.now()
