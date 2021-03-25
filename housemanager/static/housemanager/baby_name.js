@@ -93,6 +93,15 @@ document.addEventListener('DOMContentLoaded', function() {
         note.value = "";
         note_submit.disabled = true;
     }
+    
+        let buttons = document.querySelectorAll("#remove-note")
+        console.log(buttons)
+
+        buttons.forEach(element => {
+            console.log(element.dataset.id)
+        })
+
+
     }
 
     fetch(`/baby_name/${name.innerHTML}`, {
