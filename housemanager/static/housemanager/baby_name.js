@@ -103,38 +103,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     })
     
-    let change = document.querySelector("#duedate")
-
-    let c_div = document.querySelector("#count-div")
     
-    change.onclick = function () {
-
-    let change_form = document.createElement("input")
-    change_form.type = "date"
-    change_form.classList.add("form-control")
-    change_form.id = "change_form"
-
-    c_div.append(change_form)
-
-    change.onclick = function () {
-    
-
-    fetch("/change_due_date", {
-        method: 'POST',
-        body: JSON.stringify({
-            name: `${name.innerHTML}`,
-            date: `${change_form.value}`
-
-            
-        })
-    })
-    .then(response => response.json())
-    .then(response => {
-        countdown(response)
-    })
-
-    }
    
-}
+
 
 })
