@@ -81,13 +81,20 @@ def register(request):
         return render(request, "housemanager/register.html")
 
 @login_required(login_url="/login")
+@csrf_exempt
 def dogs(request):
-    dogs = Dogs.objects.all()
-    todo = Todo.objects.filter(todo_cat="Dogs", done=False)
-    return render(request, "housemanager/dogs.html", {
-        "dogs": dogs, 
-        "todo": todo
-    })
+    if request.method == "GET":
+        dogs = Dogs.objects.all()
+        todo = Todo.objects.filter(todo_cat="Dogs", done=False)
+        return render(request, "housemanager/dogs.html", {
+            "dogs": dogs, 
+            "todo": todo
+        })
+    else:
+        data = json.loads(request.body)
+        name = data.get("name")
+        Dogs.objects.filter(dog_name=name).delete()
+        return JsonResponse("Done", safe=False)
 
 @login_required(login_url="/login")
 def dog_name(request, name):
@@ -107,6 +114,9 @@ def dog_name(request, name):
         
 
             })
+    elif request.method == "POST":
+        pass
+
    
 @login_required(login_url="/login")
 @csrf_exempt

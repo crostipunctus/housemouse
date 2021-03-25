@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     }
+    if (document.querySelector("#vacc-done")) {
 
     let v_done = document.querySelector("#vacc-done")
 
@@ -84,7 +85,31 @@ document.addEventListener('DOMContentLoaded', function() {
       return false;
     
     }
-   
+  }
+
+
+    let remove = document.querySelector("#remove")
+
+    let dg_name = document.querySelector("#name")
+
+    console.log(remove)
+
+    remove.onclick = function () {
+
+      fetch('/dogs', {
+        method: 'POST',
+        body: JSON.stringify({
+          name: `${dg_name.innerHTML}`
+        })
+      })
+      .then(response => response.text())
+      .then(response => console.log(response))
+
+      window.location.href = "/dogs";
+
+
+
+    }
 
 
 })

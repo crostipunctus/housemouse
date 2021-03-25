@@ -98,6 +98,8 @@ document.addEventListener('DOMContentLoaded', function() {
         new_dog.innerHTML = di.value
         dog_form.style.display = "none"
         dog_list.appendChild(new_dog)    
+        dog_but.style.display = "none"
+        add_dog.style.display = "block";
 
 
 
